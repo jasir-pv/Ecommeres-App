@@ -9,7 +9,7 @@ const Container =styled.div`
     position: relative;
 `
 
-const Image = styled.div`
+const Image = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -20,7 +20,6 @@ const Info = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: yellow;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +34,7 @@ const Button = styled.button`
     border-radius: 7px;
     cursor: pointer;
     color: gray;
-     
+      
 `
 const CategoryItem = ({item}) => {
   return (
@@ -50,4 +49,4 @@ const CategoryItem = ({item}) => {
   )
 }
 
-export default CategoryItem
+export default CategoryItem;
