@@ -46,7 +46,7 @@ export const categories =[
     },
     {
         id: 5,
-        img: "https://www.pngitem.com/pimgs/m/121-1218915_kids-dress-png-suit-children-png-transparent-png.png",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Uz1tFT1sPpMVkapWqsiyDbY0AxvkoZlXTjOJAHzk5RBBG1NVszKYHzsZSvRIKxZUJgc&usqp=CAU",
         title: "Western Styles",
     },
 ]

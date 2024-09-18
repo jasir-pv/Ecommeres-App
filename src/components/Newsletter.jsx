@@ -11,11 +11,11 @@ const Container = styled.div`
     flex-direction: column;
 `
 const Title = styled.h2`
-    font-size: 70px;
-    margin-bottom: 20px;
+    font-size: 45px;
+    margin-bottom: 10px;
 `
 const Desc = styled.div`
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
     margin-bottom: 20px;
 `
