@@ -100,7 +100,7 @@ const Hr =styled.hr`
 
 const Summary = styled.div`
     flex: 1;
-    background-color: red;
+    background-color: ;
 
 `
 
