@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import Search from '@mui/icons-material/Search';
 import Badge from '@mui/material/Badge';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
   height: 60px;
   background-color: blak;
+  ${mobile({ display: "none" })}
 `
 const Wrapper = styled.div`
     padding: 10px 20px;
