@@ -28,16 +28,19 @@ export const categories =[
         id: 1,
         img: "https://images.bestsellerclothing.in/data/JJ/2-feb-2023/101912602_g0.jpg?width=488&height=650&mode=fill&fill=blur&format=auto",
         title: "Shirt Style",
+        cat:"women"
     },
     {
         id: 2,
         img: "https://img.lovepik.com/free-png/20211108/lovepik-fashion-boy-little-boy-with-cartoon-glasses-png-image_400518342_wh1200.png",
         title: "Long wear Love",
+                cat:"women"
     },
     {
         id: 3,
         img: "https://e7.pngegg.com/pngimages/906/242/png-clipart-child-boy-infant-children-fashion-child-fashion-thumbnail.png",
         title: "Light Jackets",
+        cat:"jeans"
     },
     {
         id: 4,
