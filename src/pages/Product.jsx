@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { mobile } from '../responsive'
+import { useLocation } from 'react-router-dom'
 
 
 const Container = styled.div`
@@ -127,6 +128,12 @@ const Button = styled.button`
 
 
 const Product = () => {
+  const location = useLocation()
+  const cat = location.pathname.split("/")[2];
+
+  const [Product ,setProduct] = useState({})
+
+ 
   return (
     <Container>
       <Navbar />

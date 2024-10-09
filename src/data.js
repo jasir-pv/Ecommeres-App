@@ -28,13 +28,15 @@ export const categories =[
         id: 1,
         img: "https://images.bestsellerclothing.in/data/JJ/2-feb-2023/101912602_g0.jpg?width=488&height=650&mode=fill&fill=blur&format=auto",
         title: "Shirt Style",
-        cat:"women"
+        cat:"women",
+
+
     },
     {
         id: 2,
         img: "https://img.lovepik.com/free-png/20211108/lovepik-fashion-boy-little-boy-with-cartoon-glasses-png-image_400518342_wh1200.png",
         title: "Long wear Love",
-                cat:"women"
+        cat:"women"
     },
     {
         id: 3,
@@ -46,11 +48,13 @@ export const categories =[
         id: 4,
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Uz1tFT1sPpMVkapWqsiyDbY0AxvkoZlXTjOJAHzk5RBBG1NVszKYHzsZSvRIKxZUJgc&usqp=CAU",
         title: "Short wearsl",
+        cat:"women"
     },
     {
         id: 5,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Uz1tFT1sPpMVkapWqsiyDbY0AxvkoZlXTjOJAHzk5RBBG1NVszKYHzsZSvRIKxZUJgc&usqp=CAU",
+        img: "",
         title: "Western Styles",
+        cat:"women"
     },
 ]
 
