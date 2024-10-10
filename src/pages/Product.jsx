@@ -131,6 +131,9 @@ const Product = () => {
   const location = useLocation()
   const id = location.pathname.split("/")[2];
   const [product ,setProduct] = useState({})
+  const [quantity ,setQuantity] = useState(1)
+  const [color ,setColor] = useState("")
+  const [size ,setSize] = useState("")
 
   useEffect(()=>{
     const getProduct = async ()=>{
@@ -143,7 +146,13 @@ const Product = () => {
     getProduct()
   },[id])
 
-
+const handleQuantity = (type) =>{
+  if(type === "dec"){
+   quantity > 1 && setQuantity(quantity-1)
+  }else{
+    setQuantity(quantity+1)
+  }
+}
  
   return (
     <Container>
@@ -167,7 +176,7 @@ const Product = () => {
               <Filter>
               <FilterTitle> Color </FilterTitle>
                 {product.color?.map((c) => (
-                <FilterColor color={c} key={c} />  // <-- JSX returned implicitly
+                <FilterColor color={c} key={c} onClick={()=>setColor(c)} />  // <-- JSX returned implicitly
                   ))}
 
                
@@ -175,20 +184,20 @@ const Product = () => {
               </Filter>
               <Filter>
               <FilterTitle>Size</FilterTitle>
-                <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption> 
-                <FilterSizeOption>S</FilterSizeOption> 
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+                <FilterSize onChange={(e)=> setSize(e.target.value)}>
+                   {product.size?.map((s)=>(
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption> 
+                ))}
+                
+               
                 </FilterSize>
               </Filter>
            </FilterContainer>
            <AddContainer>
             <AmountContainer>
-              <RemoveIcon />
-              <Amount>1</Amount>
-              <AddIcon />
+              <RemoveIcon onClick={()=>handleQuantity("dec")}/>
+              <Amount>{quantity}</Amount>
+              <AddIcon onClick={()=>handleQuantity("inc")}/>
             </AmountContainer>
             <Button>Add to Cart</Button>
            </AddContainer>
