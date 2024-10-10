@@ -28,7 +28,7 @@ export const categories =[
         id: 1,
         img: "https://images.bestsellerclothing.in/data/JJ/2-feb-2023/101912602_g0.jpg?width=488&height=650&mode=fill&fill=blur&format=auto",
         title: "Shirt Style",
-        cat:"women",
+        cat:"boys",
 
 
     },

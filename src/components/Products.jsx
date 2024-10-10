@@ -21,10 +21,13 @@ const Products = ({cat,filters,sort}) => {
       try{
         const res = await axios.get( 
           cat ?
-           `http://localhost:3000/api/products?category=${cat}`
-           : "http://localhost:3000/api/products"
+           `http://localhost:5000/api/products?category=${cat}`
+           :"http://localhost:5000/api/products"
+          
           )
           setProducts(res.data)
+          console.log(res);
+          
       }catch (err){}
     }
     getProducts()
@@ -34,7 +37,10 @@ const Products = ({cat,filters,sort}) => {
     cat && setFilterdProducts(
       products.filter(item=> Object.entries(filters).every(([key, value])=>
       item[key].includes(value)))
+      
     )
+    
+    
   },[products,cat,filters])
 
   useEffect(()=>{
@@ -44,7 +50,7 @@ const Products = ({cat,filters,sort}) => {
         )
       }else if((sort==="asc")){
         setFilterdProducts(prev=>
-        [...prev].sort((a,b)=>b.price - a.price)
+        [...prev].sort((a,b)=>a.price - b.price)
         )
       }else {
         setFilterdProducts(prev=>

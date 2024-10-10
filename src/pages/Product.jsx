@@ -8,8 +8,10 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { mobile } from '../responsive'
 import { useLocation } from 'react-router-dom'
+import { publicRequest } from '../requestMethods'
 
 
+      // Css Styles          
 const Container = styled.div`
 
 `
@@ -122,16 +124,25 @@ const Button = styled.button`
 `
 
 
-
-
-
-
+//   js Startted
 
 const Product = () => {
-  const location = useLocation()
-  const cat = location.pathname.split("/")[2];
 
-  const [Product ,setProduct] = useState({})
+  const location = useLocation()
+  const id = location.pathname.split("/")[2];
+  const [product ,setProduct] = useState({})
+
+  useEffect(()=>{
+    const getProduct = async ()=>{
+      try{
+        const res = await publicRequest.get( "http://localhost:5000/api/products/find/" + id)
+        setProduct(res.data)
+      }catch(err){}
+    }
+
+    getProduct()
+  },[id])
+
 
  
   return (
@@ -140,25 +151,27 @@ const Product = () => {
       <Announcement />
       <Wrapper>
         <ImageContainer>
-            <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7AwwGqFUzGMdjt-YzNKKh8sGFGiH_yaFZ0A&s"/>
+            <Image src={product.img}/>
         </ImageContainer>
         <InfoContainer>
            <Title>
-            Italian Denim Jacket
+            {product.title}
            </Title> 
            <Desc>
-           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.H1
-
+           {product.desc}
            </Desc>
            <Price>
-            $20
+            ${product.price}
            </Price>
            <FilterContainer>
               <Filter>
-                <FilterTitle> Color</FilterTitle>
-                <FilterColor color="black"/>
-                <FilterColor color="darkblue"/>
-                <FilterColor color="grey"/>
+              <FilterTitle> Color </FilterTitle>
+                {product.color?.map((c) => (
+                <FilterColor color={c} key={c} />  // <-- JSX returned implicitly
+                  ))}
+
+               
+
               </Filter>
               <Filter>
               <FilterTitle>Size</FilterTitle>
