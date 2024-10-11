@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
@@ -7,10 +7,20 @@ import styled from 'styled-components'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { mobile } from '../responsive'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import StripeCheckout from "react-stripe-checkout"
+import { userRequest } from '../requestMethods'
 
-const Container = styled.div`
 
-`
+const KEY = process.env.REACT_APP_STRIPE;
+console.log("Stripe Key: ", KEY);
+
+
+
+const Container = styled.div``
+
+
 const Wrapper = styled.div`
     padding: 20px;
     ${mobile({ padding: "10px" })}
@@ -108,6 +118,7 @@ const Hr =styled.hr`
     
 `
 
+
 const Summary = styled.div`
     flex: 1;
     border: 0.5px solid lightgray;
@@ -145,6 +156,27 @@ const Button = styled.div`
 
 
 const Cart = () => {
+    const cart = useSelector(state=>state.cart)
+    const [stripeToken,setStripeToken] = useState(null)
+    const history = useNavigate
+
+    const onToken = (token)=>{
+            setStripeToken(token)
+    }
+    
+    useEffect(()=>{
+        const makeRequest =async ()=>{
+            try{
+                const res = await userRequest("/checkout/payment",{
+                    tokenId: stripeToken,
+                    amount:cart.total * 100,
+                    
+                })
+                history.push("/success")
+            }catch{}
+        }
+    },[stripeToken,cart.total,history])
+
   return (
     <Container>
       <Navbar />
@@ -163,47 +195,28 @@ const Cart = () => {
         </Top>
         <Bottom>
             <Info>
-                <Product>
+               {cart.products.map(product=>( <Product>
                     <ProductDetail>
-                        <Image src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSZIP3jtUOHerH0gHN4dVSb0n7PkOAI5C8Ev86Mpsx1-CMG1lsY5H4poN0Hr_oQc3CGzCnlCb1wvoXaOOBRYyC1Hiux7taJad2MoEvsZpT6FMVkDO27NvSg&usqp=CAE" />
+                        <Image src={product.img}/>
                         <Details>
-                            <ProductName><b>Product:</b> Jessie Thunder Shoes</ProductName>
-                            <ProductId><b>ID:</b> 987456321</ProductId>
-                            <ProductColor color="black"/>
-                            <ProductSize><b>Size:</b> 37.5</ProductSize>
+                            <ProductName><b>Product:</b> {product.title}</ProductName>
+                            <ProductId><b>ID:</b> {product._id}</ProductId>
+                            <ProductColor color={product.color}/>
+                            <ProductSize><b>Size:</b> {product.size}</ProductSize>
                         </Details>
                     </ProductDetail>
                     <PriceDetail>
                     <ProductAmountContainer>
                         <AddIcon />
-                        <ProductAmount>2</ProductAmount>
+                        <ProductAmount>{product.quantity}</ProductAmount>
                         <RemoveIcon />
                     </ProductAmountContainer>
-                    <ProductPrice> $ 30</ProductPrice>
+                    <ProductPrice> $ {product.price*product.quantity}</ProductPrice>
 
                     </PriceDetail>
-                </Product>
+                </Product>))}
                 <Hr />
-                <Product>
-                    <ProductDetail>
-                        <Image src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQ11E-5T68MQ2F0nU2p4afQNgAR50RBIT9Ut86zDCdTnPUkHSu4lWQ8QdvUUeZ_tGuTio2ELD7JPxL3NDrGMbZ3UGPAWkfnrNzk8IBwR2Jx&usqp=CAE" />
-                        <Details>
-                            <ProductName><b>Product:</b> Hakura T-Shirt</ProductName>
-                            <ProductId><b>ID:</b> 654881658</ProductId>
-                            <ProductColor color="gray"/>
-                            <ProductSize><b>Size:</b> M</ProductSize>
-                        </Details>
-                    </ProductDetail>
-                    <PriceDetail>
-                    <ProductAmountContainer>
-                        <AddIcon />
-                        <ProductAmount>1</ProductAmount>
-                        <RemoveIcon />
-                    </ProductAmountContainer>
-                    <ProductPrice> $ 20</ProductPrice>
-
-                    </PriceDetail>
-                </Product>
+               
             </Info>
             <Summary>
                 <SummaryTitle>
@@ -211,7 +224,7 @@ const Cart = () => {
                 </SummaryTitle>
                 <SummaryItem>
                     <SummaryItemText>Subtotal</SummaryItemText>
-                    <SummaryItemText> $ 5.90</SummaryItemText>
+                    <SummaryItemText> $ {cart.total}</SummaryItemText>
                 </SummaryItem>
                 <SummaryItem>
                     <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -223,9 +236,21 @@ const Cart = () => {
                 </SummaryItem>
                 <SummaryItem type="total">
                     <SummaryItemText >Total</SummaryItemText>
-                    <SummaryItemPrice> $ 80</SummaryItemPrice>
+                    <SummaryItemPrice> $ {cart.total}</SummaryItemPrice>
                 </SummaryItem>
-                <Button> Checkout Now</Button>
+                <StripeCheckout
+                        name='Jaze Shop'
+                        image='./images/small.jpg'
+                        billingAddress
+                        shippingAddress
+                        description={`Your total is $ ${cart.total}`}
+                        amount={cart.total*100}
+                        token={onToken}
+                        stripeKey={KEY}
+                >
+                     <Button> Checkout Now</Button>
+                </StripeCheckout>
+               
             </Summary>
         </Bottom>
       </Wrapper>
