@@ -9,7 +9,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { mobile } from '../responsive'
 import { useLocation } from 'react-router-dom'
 import { publicRequest } from '../requestMethods'
-import { addProduct } from './redux/cartRedux'
+import { addProduct } from '../redux/cartRedux'
 import { useDispatch } from 'react-redux'
 
 

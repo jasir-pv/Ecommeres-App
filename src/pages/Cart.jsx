@@ -14,7 +14,7 @@ import { userRequest } from '../requestMethods'
 
 
 const KEY = process.env.REACT_APP_STRIPE;
-console.log("Stripe Key: ", KEY);
+
 
 
 
@@ -158,7 +158,9 @@ const Button = styled.div`
 const Cart = () => {
     const cart = useSelector(state=>state.cart)
     const [stripeToken,setStripeToken] = useState(null)
-    const history = useNavigate
+    const navigate = useNavigate()
+    console.log();
+    
 
     const onToken = (token)=>{
             setStripeToken(token)
@@ -166,16 +168,23 @@ const Cart = () => {
     
     useEffect(()=>{
         const makeRequest =async ()=>{
+
             try{
-                const res = await userRequest("/checkout/payment",{
-                    tokenId: stripeToken,
+                const res = await userRequest.post("/checkout/payment",{
+                  
+                   
+                    tokenId: stripeToken.id,
                     amount:cart.total * 100,
                     
                 })
-                history.push("/success")
-            }catch{}
+           
+                navigate("/success",{data:res.data})
+            }catch(err){
+
+            }
         }
-    },[stripeToken,cart.total,history])
+        stripeToken &&  makeRequest()
+    },[stripeToken,cart.total,navigate])
 
   return (
     <Container>
