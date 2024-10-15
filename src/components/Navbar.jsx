@@ -10,12 +10,14 @@ import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   height: 60px;
+  background-color: #faedf7;
   ${mobile({ height: "50px" })}
 `
 const Wrapper = styled.div`
     padding: 10px 20px;
     display: flex;
     justify-content: space-between; 
+    background-color: #faedf7;
     align-items: center;
     ${mobile({ padding: "10px 0px" })}
 `

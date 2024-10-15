@@ -38,6 +38,15 @@ const Button = styled.button`
     border-radius: 7px;
     cursor: pointer;
     color: gray;
+    
+    
+    &:hover{
+       background-color: #e667c4;
+       border: 2px solid white;
+       color: white;
+       transition: ease-in-out 0.3s;
+       font-weight: 600;
+    }
       
 `
 const CategoryItem = ({item}) => {

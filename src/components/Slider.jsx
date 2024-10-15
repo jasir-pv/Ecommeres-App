@@ -12,7 +12,7 @@ const Container =styled.div`
     display: flex;
     position: relative;
     overflow: hidden;
-    margin-top: 30px;
+    margin-top: 0px;
     ${mobile({ display: "none" })}
 
 `
@@ -47,12 +47,16 @@ const Slide = styled.div`
     width: 100vw;
     display: flex;
     align-items: center;
-    background-color: #${props=>props.bg};
+    justify-content: center;
+    background-color: ${props=>props.bg};
+    
 
 `
 const ImgContainer = styled.div`
     flex: 1;
     height: 100%; 
+    margin: 70px 0 0 70px;
+
 
 `
 const Image = styled.img`

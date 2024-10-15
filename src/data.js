@@ -2,31 +2,31 @@
 
 export const sliderItems=[{
     id:1,
-    img:"https://e7.pngegg.com/pngimages/251/907/png-clipart-boy-pointing-up-r2-d2-kylo-ren-stormtrooper-star-wars-episode-vii-balloon-kids-fashion-tshirt-child-thumbnail.png",
+    img:"./images/kids4.png",
     title:"Summer Sale",
     desc:"Don't Compromise on Style! Get Flat 30% OFF For New Arrivals",
-    bg: "f5fafd",
+    bg: "#fcd4f2",
     },
     {
         id:2,
-        img:"https://e7.pngegg.com/pngimages/251/907/png-clipart-boy-pointing-up-r2-d2-kylo-ren-stormtrooper-star-wars-episode-vii-balloon-kids-fashion-tshirt-child-thumbnail.png",
+        img:"./images/kids7.jpg",
         title:"Winter Sale",
         desc:"Don't Compromise on Style! Get Flat 30% OFF For New Arrivals",
-        bg: "f5fafd",
+        bg: "#fcd4f2",
     },
     {
         id:2,
-        img:"https://e7.pngegg.com/pngimages/251/907/png-clipart-boy-pointing-up-r2-d2-kylo-ren-stormtrooper-star-wars-episode-vii-balloon-kids-fashion-tshirt-child-thumbnail.png",
+        img:"./images/kids5.png",
         title:"Popular Sale",
         desc:"Don't Compromise on Style! Get Flat 30% OFF For New Arrivals",
-        bg: "f5fafd",
+        bg: "#fcd4f2",
     }
 ]
 
 export const categories =[
     {
         id: 1,
-        img: "https://images.bestsellerclothing.in/data/JJ/2-feb-2023/101912602_g0.jpg?width=488&height=650&mode=fill&fill=blur&format=auto",
+        img: "./images/kids8.jpg",
         title: "Shirt Style",
         cat:"boys",
 
@@ -34,25 +34,25 @@ export const categories =[
     },
     {
         id: 2,
-        img: "https://img.lovepik.com/free-png/20211108/lovepik-fashion-boy-little-boy-with-cartoon-glasses-png-image_400518342_wh1200.png",
+        img: "./images/kids1.jpg",
         title: "Long wear Love",
         cat:"women"
     },
     {
         id: 3,
-        img: "https://e7.pngegg.com/pngimages/906/242/png-clipart-child-boy-infant-children-fashion-child-fashion-thumbnail.png",
+        img: "./images/kids3.jpg",
         title: "Light Jackets",
         cat:"jeans"
     },
     {
         id: 4,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Uz1tFT1sPpMVkapWqsiyDbY0AxvkoZlXTjOJAHzk5RBBG1NVszKYHzsZSvRIKxZUJgc&usqp=CAU",
+        img: "./images/kids2.jpg",
         title: "Short wearsl",
         cat:"women"
     },
     {
         id: 5,
-        img: "",
+        img: "./images/kids7.jpg",
         title: "Western Styles",
         cat:"women"
     },
